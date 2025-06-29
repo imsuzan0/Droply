@@ -42,6 +42,7 @@ fileRouter.post("/", upload.single("myfile"), async (req, res) => {
 
     return res.status(200).json({
       file: `${process.env.APP_BASE_URL}/files/${response.uuid}`,
+      uuid: response.uuid,
     });
   } catch (error) {
     console.error("Error saving file:", error);
@@ -70,7 +71,7 @@ fileRouter.post("/send", async (req, res) => {
     sendEmail({
         from:sender,
         to:receiver,
-        subject:"inshare file sharing",
+        subject:"inShare file sharing",
         text:`${sender} shared a file with you.`,
         html:require("../services/emailTemplate")({
             emailFrom:sender,

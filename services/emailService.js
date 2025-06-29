@@ -1,7 +1,23 @@
-const nodemailer=require("nodemailer")
+const nodemailer = require("nodemailer");
 
-const sentEmail=({from,to,subject,text,html})=>{
-    
-}
+const sentEmail = async ({ from, to, subject, text, html }) => {
+  let transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: process.env.SMTP_PORT,
+    secure: false,
+    auth: {
+      user: process.env.MAIL_USER,
+      pass: process.env.MAIL_PASS,
+    },
+  });
 
-module.exports=sentEmail
+  let info=await transporter.sendMail({
+    from:`inShare <${from}>`,
+    to:to,
+    subject:subject,
+    text:text,
+    html:html
+  })
+};
+
+module.exports = sentEmail;
