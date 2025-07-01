@@ -83,7 +83,7 @@ fileRouter.post("/send", async (req, res) => {
     })
     return res
       .status(200)
-      .json({ message: "Email has been sent successfully" });
+      .json({success: true, message: "Email has been sent successfully" });
   } catch (error) {
     console.error("Error sending email:", error);
     return res.status(500).json({ message: "Something went wrong" });
