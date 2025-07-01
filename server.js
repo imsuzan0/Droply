@@ -4,6 +4,8 @@ const dotenv = require("dotenv");
 const path = require("path");
 const cors = require("cors");
 const fs = require("fs");
+const job=require("./services/cronjob")
+job.start();
 
 dotenv.config();
 const PORT = process.env.PORT || 3000;
