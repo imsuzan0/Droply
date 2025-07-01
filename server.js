@@ -3,13 +3,13 @@ const connectDb = require("./db/db");
 const dotenv = require("dotenv");
 const path = require("path");
 const cors = require("cors");
+const fs = require("fs");
 
 dotenv.config();
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-const fs = require("fs");
-const path = require("path");
+
 
 const uploadDir = path.join(__dirname, "uploads");
 
