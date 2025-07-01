@@ -68,7 +68,7 @@ fileRouter.post("/send", async (req, res) => {
     const response = await file.save();
 
     //send email
-    sendEmail({
+    await sendEmail({
         from:sender,
         to:receiver,
         subject:"inShare file sharing",
