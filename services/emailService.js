@@ -11,13 +11,20 @@ const sentEmail = async ({ from, to, subject, text, html }) => {
     },
   });
 
-  let info=await transporter.sendMail({
+  let info;
+  try {
+    info=await transporter.sendMail({
     from:`inShare <${from}>`,
     to:to,
     subject:subject,
     text:text,
     html:html
   })
+    console.log('Message sent:', info);
+  } catch (error) {
+    console.error('Error sending email:', error);
+  throw error; 
+  }
 };
 
 module.exports = sentEmail;
